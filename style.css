@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    /* outline: 1px red solid; */
 }
 
 :root {
@@ -17,6 +18,9 @@
     --bg-soft-violet: hsl(273, 75%, 66%);
     --bg-soft-blue: hsl(240, 73%, 65%);
 
+    --bg-s-v: 273, 75%, 66%;
+    --bg-s-b: 240, 73%, 65%;
+
     /* dividers */
     --light-grayish-blue: hsl(240, 5%, 91%);
     
@@ -27,18 +31,101 @@
 }
 
 html {
-    font-size: 15px;
+    font-size: 16px; /* Adjusting this, need to adjust size of picture, img, etc. */
 }
 
 body {
     font-family: 'Kumbh Sans', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    
+}
+
+.container {
+    display: grid;
+    place-content: center;
+    height: 100vh;
+    /* background: linear-gradient(to bottom, hsl(273, 75%, 66%), hsl(240, 73%, 65%)); */
+    background: linear-gradient(to bottom, var(--bg-soft-violet), var(--bg-soft-blue));
 }
 
 
+picture {
+    border-top-left-radius: 2rem;
+    border-top-right-radius: 2rem;
+    background-color: var(--white);
+    background-image: url("./images/bg-pattern-mobile.svg");
+    background-size: 80%;
+    background-repeat: no-repeat;
+    background-position-x: center;
 
+    display: flex;
+    justify-content: center;
+}
+
+picture > img {
+    width: 80%;
+    margin-top: -8.5rem;
+    padding-bottom: 3rem; 
+}
+
+.content {
+    width: 23rem;
+    padding: 0 2rem;
+    padding-bottom: 3rem;
+    border-bottom-left-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+    background-color: var(--white);
+}
+
+.title {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+details {
+    padding: 1em 0;
+    border-bottom: 1px solid var(--light-grayish-blue);
+}
+
+summary {
+    font-size: calc(var(--font-size-body-copy) * 1.125);
+    list-style: none; /* removes the default arrow */
+    transition: color .25s ease-in-out;
+}
+
+.info {
+    font-size: calc(var(--font-size-body-copy) * 1.125);
+    padding-right: 1.2rem;
+    font-weight: 400;
+}
+
+:not(details[open]) summary {
+    font-weight: 400; 
+}
+
+details[open] summary {
+    font-weight: 700;
+    margin-bottom: 1em;
+}
+
+summary:hover {
+    color: var(--primary-Soft-red);
+    cursor: pointer;
+}
+
+summary::after {
+    content: url("./images/icon-arrow-down.svg");
+    float: right;
+    transition: transform .25s ease;
+}
+ 
+details[open] summary::after {
+    transform: rotate(180deg);
+}
+
+@media screen and (min-width: 768px) {
+    /* two-columns = 920px x 508px */
+}
 
 .attribution { font-size: 11px; text-align: center; }
 .attribution a { color: hsl(228, 45%, 44%); }
