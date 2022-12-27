@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    outline: 1px red solid;
+    /* outline: 1px red solid; */
 }
 
 :root {
@@ -38,49 +38,51 @@ body {
     font-family: 'Kumbh Sans', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
 }
 
 .container {
-    display: grid;
-    place-content: center;
+    display: flex;
+    width: 100%;
     height: 100vh;
+    max-height: 100%;
+    padding: 10rem 0 5rem 0;
+    overflow-y: auto; /* when all the details are expanded, makes sure that content doesn't overlap into the footer */
     background: linear-gradient(to bottom, var(--bg-soft-violet), var(--bg-soft-blue));
 }
 
-picture {
-    /* background-color: var(--white); */
-    /* background-image: url("./images/bg-pattern-mobile.svg"); */
-    background-size: 90%;
-    background-repeat: no-repeat;
-    background-position-x: center;
+.content {
+    width: 21rem;
+    padding: 0 2rem;
+    padding-bottom: 3rem;
+    border-radius: 2rem;
+    background-color: var(--white);
+    margin: auto;
+}
 
-    display: flex;
-    justify-content: center;
+picture {
+    width: 100%;
 }
 
 .illustration {
-    width: 90%;
-    margin-top: -7rem;
-    padding-bottom: 3rem; 
+    margin-top: -7.5rem;
+    /* transform: translateY(-7rem); */ /* if used, too much white space involved and no way to border radius just half */
+    background-image: url("./images/bg-pattern-mobile.svg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: bottom;
+    padding-bottom: 2rem;
 }
 
 .box {
     display: none;
 }
 
-.content {
-    /* width: 21rem; */
-    width: clamp(21rem, 25vw, 35rem);
-    padding: 0 2rem;
-    padding-bottom: 3rem;
-    border-radius: 2rem;
-    background-color: var(--white);
-}
-
 .title {
     font-size: calc(var(--font-size-body-copy) * 2.5);
     text-align: center;
-    margin: 1rem 0;
+    margin: 2rem 0;
 }
 
 details {
@@ -128,45 +130,48 @@ details[open] summary::after {
     /* two-columns = 920px x 508px */
     .content {
         display: flex;
-        width: 58rem;
-        height: 626px;
-        padding: 0;
+        min-height: 600px;  /* expands height if all the details are expanded */
+        width: 64rem;
+        padding: 0; /* resets padding from mobile view */
+        /* can't find a way not to clip the 'box' as the viewport approaches 768px, i.e. there's no margin on left or right side of container */
     }
 
     picture {
-        background-image: url("./images/bg-pattern-desktop.svg");
-        background-size: 150%;
-        background-position: -16.5rem center;
-        border-top-left-radius: 2rem;
-        border-bottom-left-radius: 2rem; 
+        background-image: url("./images/bg-pattern-desktop.svg"), url("./images/illustration-woman-online-desktop.svg");
+        background-size: 165%, 100%;
+        background-repeat: no-repeat, no-repeat;
+        background-position: -27rem center, -5rem center;
     }
     
     .illustration {
-        width: 100%;
-        height: auto;
-        margin: auto 0;
-        padding: unset;
-        transform: translateX(-9rem);
-    }
-    .box {
-        display: inline-block;
-        width: 40%;
-        height: fit-content;
-        margin: auto 0;
-        z-index: 100;
-        transform: translate(.2rem, 2.5rem);
+        display: none;  /* because illustration's now a background-image */
     }
 
-    article:hover~.box {
-        transform: translateX(-3rem); /* not working yet, dunno if it's possible */
+    .box {
+        display: block;
+        position: relative;
+        top: 16rem;
+        bottom: 0;
+        left: -6rem;
+        right: 0;
+        width: 40%;
+        /* other methods below behave erratically */
+        /* margin: auto 0; */
+        /* z-index: 100; */
+        /* transform: translate(.2rem, 2.5rem); */
+        /* transform: translateY(12rem); */
+        /* transform: translateX(-5rem); */
     }
     
     article {
-        width: 70%;
+        width: 80%;
         margin: auto 0;
-        margin-left: 2rem;
-        margin-right: 5rem;
-        padding: 2rem 0;    
+        margin-right: 3rem;
+        padding: 2rem 1rem 2rem 0;
+    }
+
+    .title {
+        text-align: left;
     }
 
 }
