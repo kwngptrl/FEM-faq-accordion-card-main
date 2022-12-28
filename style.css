@@ -17,9 +17,6 @@
     --bg-soft-violet: hsl(273, 75%, 66%);
     --bg-soft-blue: hsl(240, 73%, 65%);
 
-    --bg-s-v: 273, 75%, 66%;
-    --bg-s-b: 240, 73%, 65%;
-
     /* dividers */
     --light-grayish-blue: hsl(240, 5%, 91%);
     
@@ -57,6 +54,7 @@ body {
     border-radius: 2rem;
     background-color: var(--white);
     margin: auto;
+    box-shadow: 0px 9px 13px 5px hsla(238, 29%, 16%, 30%);
 }
 
 picture {
