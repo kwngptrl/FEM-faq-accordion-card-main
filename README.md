@@ -28,8 +28,8 @@ Users should be able to:
 
 ### Screenshot
 
-![Screenshot Desktop 2022-12-12](./Screenshot Desktop 2022-12-12.png)
-![Screenshot Mobile 2022-12-12](./Screenshot Mobile 2022-12-12.png)
+![Screenshot Desktop 2022-12-12](./Screenshot-desktop-202212-27.png)
+![Screenshot Mobile 2022-12-12](./Screenshot-mobile-202212-27.png)
 
 ### Links
 
